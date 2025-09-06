@@ -1,30 +1,31 @@
 "use client"
 
-import { useState, useEffect } from "react"
+// import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ChessIcon } from "@/components/chess-icon"
 import { ChevronDown, Download, Mail } from "lucide-react"
+import Typewriter from 'typewriter-effect';
 
 export function HeroSection() {
-  const [typewriterText, setTypewriterText] = useState("")
-  const [showCursor, setShowCursor] = useState(true)
-  const fullText = "Software Developer | Creative Technologist"
+  // const [typewriterText, setTypewriterText] = useState("")
+  // const [showCursor, setShowCursor] = useState(true)
+  // const fullText = "Software Developer | Creative Technologist"
 
-  useEffect(() => {
-    let i = 0
-    const timer = setInterval(() => {
-      if (i < fullText.length) {
-        setTypewriterText(fullText.slice(0, i + 1))
-        i++
-      } else {
-        clearInterval(timer)
-        // Hide cursor after typing is complete
-        setTimeout(() => setShowCursor(false), 1000)
-      }
-    }, 100)
+  // useEffect(() => {
+  //   let i = 0
+  //   const timer = setInterval(() => {
+  //     if (i < fullText.length) {
+  //       setTypewriterText(fullText.slice(0, i + 1))
+  //       i++
+  //     } else {
+  //       clearInterval(timer)
+  //       // Hide cursor after typing is complete
+  //       setTimeout(() => setShowCursor(false), 1000)
+  //     }
+  //   }, 100)
 
-    return () => clearInterval(timer)
-  }, [])
+  //   return () => clearInterval(timer)
+  // }, [])
 
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
@@ -80,8 +81,13 @@ export function HeroSection() {
         {/* Role with Typewriter Effect */}
         <div className="mb-6 h-16 flex items-center justify-center">
           <h2 className="text-xl md:text-2xl text-muted-foreground font-medium">
-            {typewriterText}
-            {showCursor && <span className="animate-pulse text-primary">|</span>}
+            <Typewriter
+              options={{
+                strings: ['Software Developer', 'Creative Technologist','SEO Expert'],
+                autoStart: true,
+                loop: true,
+              }}
+            />
           </h2>
         </div>
 

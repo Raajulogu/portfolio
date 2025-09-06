@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { ChessIcon } from "@/components/chess-icon"
-import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Send } from "lucide-react"
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ChessIcon } from "@/components/chess-icon";
+import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Send } from "lucide-react";
 
 const contactInfo = [
   {
@@ -27,7 +27,7 @@ const contactInfo = [
     href: "#",
     color: "text-primary",
   },
-]
+];
 
 const socialLinks = [
   {
@@ -48,7 +48,7 @@ const socialLinks = [
     href: "#",
     color: "text-primary",
   },
-]
+];
 
 export function ContactSection() {
   const [isVisible, setIsVisible] = useState(false)

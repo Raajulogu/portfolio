@@ -1,23 +1,41 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { ChessIcon } from "@/components/chess-icon"
+import { useEffect, useRef, useState } from "react";
+import { ChessIcon } from "@/components/chess-icon";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiHtml5,
+  SiTailwindcss,
+  SiMui,
+  SiNodedotjs,
+  SiMongodb,
+  SiSocketdotio,
+  SiTwilio,
+  SiGit,
+  SiPrismic,
+  SiPython,
+} from 'react-icons/si';
+
 
 const skills = [
-  { name: "React", category: "Frontend", icon: "⚛️" },
-  { name: "Next.js", category: "Frontend", icon: "▲" },
-  { name: "TypeScript", category: "Language", icon: "TS" },
-  { name: "HTML/CSS", category: "Frontend", icon: "🎨" },
-  { name: "Tailwind", category: "Styling", icon: "💨" },
-  { name: "MUI", category: "UI Library", icon: "🎯" },
-  { name: "Node.js", category: "Backend", icon: "🟢" },
-  { name: "MongoDB", category: "Database", icon: "🍃" },
-  { name: "Socket.io", category: "Real-time", icon: "🔌" },
-  { name: "Twilio", category: "Communication", icon: "📞" },
-  { name: "Git", category: "Version Control", icon: "📝" },
-  { name: "Prismic CMS", category: "CMS", icon: "📄" },
-  { name: "Python", category: "Language", icon: "🐍" },
-]
+  { name: "React", category: "Frontend", icon: SiReact, color: "#61DAFB" },
+  { name: "Next.js", category: "Frontend", icon: SiNextdotjs, color: "#000000" },
+  { name: "TypeScript", category: "Language", icon: SiTypescript, color: "#3178C6" },
+  { name: "HTML/CSS", category: "Frontend", icon: SiHtml5, color: "#E34F26" },
+  { name: "Tailwind", category: "Styling", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "MUI", category: "UI Library", icon: SiMui, color: "#007FFF" },
+  { name: "Node.js", category: "Backend", icon: SiNodedotjs, color: "#339933" },
+  { name: "MongoDB", category: "Database", icon: SiMongodb, color: "#47A248" },
+  { name: "Socket.io", category: "Real-time", icon: SiSocketdotio, color: "#010101" },
+  { name: "Twilio", category: "Communication", icon: SiTwilio, color: "#F22F46" },
+  { name: "Git", category: "Version Control", icon: SiGit, color: "#F05032" },
+  { name: "Prismic CMS", category: "CMS", icon: SiPrismic, color: "#48494B" },
+  { name: "Python", category: "Language", icon: SiPython, color: "#3776AB" },
+];
+
+
 
 export function SkillsSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -75,9 +93,8 @@ export function SkillsSection() {
           {skills.map((skill, index) => (
             <div
               key={skill.name}
-              className={`group relative bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 ${
-                isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"
-              }`}
+              className={`group relative bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 ${isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"
+                }`}
               style={{
                 animationDelay: `${index * 100}ms`,
                 animationFillMode: "forwards",
@@ -85,7 +102,7 @@ export function SkillsSection() {
             >
               {/* Skill Icon */}
               <div className="text-3xl mb-3 group-hover:animate-pulse-glow transition-all duration-300">
-                {skill.icon}
+                <skill.icon color={skill.color} />
               </div>
 
               {/* Skill Name */}

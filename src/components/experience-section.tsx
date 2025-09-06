@@ -10,18 +10,18 @@ const experiences = [
     company: "SeedataMD",
     role: "Full Stack Developer",
     period: "03/2025 – Present",
-    location: "Remote",
+    location: "Hybrid",
     type: "Current Position",
     description:
-      "Built scalable MERN applications with real-time Socket.io features, Twilio integration, CMS extensions, and guided junior developers.",
+      "Built scalable MERN applications with real-time Socket.io features, CMS extensions, SEO optimizations, and guided junior developers.",
     achievements: [
       "Developed scalable MERN stack applications",
       "Implemented real-time Socket.io features",
-      "Integrated Twilio communication services",
       "Extended CMS functionality",
+      "Optimized applications for SEO",
       "Mentored junior developers",
     ],
-    technologies: ["React", "Node.js", "MongoDB", "Socket.io", "Twilio"],
+    technologies: ["Next.js", "Node.js", "MongoDB", "Socket.io", "GSC", "Prismic CMS", "Firebase", "Agile"],
     slideDirection: "left",
   },
   {
@@ -40,7 +40,7 @@ const experiences = [
       "Collaborated in Agile methodologies",
       "Improved application performance",
     ],
-    technologies: ["Next.js", "TypeScript", "REST APIs", "SEO", "Agile"],
+    technologies: ["React.js", "Node.js", "TypeScript", "MongoDB", "Prismic CMS", "Contentful CMS", "SEO", "REST APIs"],
     slideDirection: "right",
   },
 ]
@@ -115,13 +115,12 @@ export function ExperienceSection() {
                 ref={(el) => {
                   cardRefs.current[index] = el
                 }}
-                className={`relative transition-all duration-1000 ${
-                  visibleCards.includes(index)
+                className={`relative transition-all duration-1000 ${visibleCards.includes(index)
                     ? exp.slideDirection === "left"
                       ? "animate-slide-in-left"
                       : "animate-slide-in-right"
                     : "opacity-0 translate-x-12"
-                }`}
+                  }`}
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 {/* Timeline Node */}

@@ -97,7 +97,7 @@ export function AboutSection() {
             </div>
 
             {/* Stats */}
-            <div
+            {/* <div
               className={`grid grid-cols-3 gap-6 pt-8 transition-all duration-1000 delay-500 ${isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"}`}
             >
               <div className="text-center">
@@ -112,7 +112,7 @@ export function AboutSection() {
                 <div className="text-3xl font-bold text-primary mb-2">500+</div>
                 <div className="text-sm text-muted-foreground">Problems Solved</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

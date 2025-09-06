@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { ChessIcon } from "@/components/chess-icon"
-import { Trophy, Target, Award, Code } from "lucide-react"
+import { useEffect, useRef, useState } from "react";
+import { ChessIcon } from "@/components/chess-icon";
+import { Trophy, Target, Award } from "lucide-react";
 
 const achievements = [
   {
@@ -29,31 +29,31 @@ const achievements = [
   {
     id: 3,
     title: "Years of Experience",
-    subtitle: "8+",
+    subtitle: "2",
     description: "Professional software development experience",
     icon: Award,
     color: "text-secondary",
     bgColor: "bg-secondary/10",
     borderColor: "border-secondary/20",
-    counter: 8,
+    counter: 2,
   },
-  {
-    id: 4,
-    title: "Projects Delivered",
-    subtitle: "50+",
-    description: "Successfully completed and deployed projects",
-    icon: Code,
-    color: "text-purple-500",
-    bgColor: "bg-purple-500/10",
-    borderColor: "border-purple-500/20",
-    counter: 50,
-  },
-]
+  // {
+  //   id: 4,
+  //   title: "Projects Delivered",
+  //   subtitle: "50+",
+  //   description: "Successfully completed and deployed projects",
+  //   icon: Code,
+  //   color: "text-purple-500",
+  //   bgColor: "bg-purple-500/10",
+  //   borderColor: "border-purple-500/20",
+  //   counter: 50,
+  // },
+];
 
 export function AchievementsSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [counters, setCounters] = useState<{ [key: number]: number }>({})
-  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false);
+  const [counters, setCounters] = useState<{ [key: number]: number }>({});
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -130,7 +130,7 @@ export function AchievementsSection() {
         </div>
 
         {/* Achievements Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {achievements.map((achievement, index) => {
             const IconComponent = achievement.icon
             const displayValue = achievement.counter
