@@ -148,6 +148,46 @@
   }
 }
 
+/* Added scroll indicator animations */
+@keyframes scroll-dot {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes chevron-1 {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(0) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+
+@keyframes chevron-2 {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0) rotate(45deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(2px) rotate(45deg);
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -177,6 +217,19 @@
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Added scroll indicator animation classes */
+.animate-scroll-dot {
+  animation: scroll-dot 2s ease-in-out infinite;
+}
+
+.animate-chevron-1 {
+  animation: chevron-1 2s ease-in-out infinite;
+}
+
+.animate-chevron-2 {
+  animation: chevron-2 2s ease-in-out infinite 0.2s;
 }
 
 /* Added chess-inspired gradient background */

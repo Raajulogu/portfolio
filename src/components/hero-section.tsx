@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ChessIcon } from "@/components/chess-icon"
-import { ArrowDown, Download, Mail } from "lucide-react"
+import { ChevronDown, Download, Mail } from "lucide-react"
 
 export function HeroSection() {
   const [typewriterText, setTypewriterText] = useState("")
@@ -123,13 +123,24 @@ export function HeroSection() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="animate-fade-in-up" style={{ animationDelay: "1.5s" }}>
+        <div className="animate-fade-in-up w-full flex justify-center" style={{ animationDelay: "1.5s" }}>
           <button
             onClick={scrollToAbout}
-            className="group flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            className="group flex flex-col items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
           >
-            <span className="text-sm">Scroll to explore</span>
-            <ArrowDown className="w-5 h-5 animate-bounce group-hover:text-primary" />
+            <span className="text-sm font-medium">Scroll to explore</span>
+            {/* Mouse outline */}
+            <div className="relative">
+              {/* Mouse outline */}
+              <div className="w-6 h-10 border-2 border-current rounded-full relative overflow-hidden">
+                {/* Animated scroll dot */}
+                <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-current rounded-full animate-scroll-dot" />
+              </div>
+              {/* Animated chevrons */}
+              <div className="flex flex-col items-center mt-2 space-y-1">
+                <ChevronDown />
+              </div>
+            </div>
           </button>
         </div>
       </div>

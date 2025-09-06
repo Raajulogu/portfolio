@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { ChessIcon } from "@/components/chess-icon"
+import { useEffect, useRef, useState } from "react";
+import { ChessIcon } from "@/components/chess-icon";
+import Image from "next/image";
 
 export function AboutSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -35,7 +36,14 @@ export function AboutSection() {
                 <div className="w-full h-full rounded-2xl bg-card border border-border flex items-center justify-center relative overflow-hidden">
                   {/* Placeholder for actual profile image */}
                   <div className="w-full h-full bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                    <span className="text-6xl font-bold text-primary">R</span>
+                    {/* <span className="text-6xl font-bold text-primary">R</span> */}
+                    <Image
+                      src='/images/rajesh.png'
+                      alt="Profile Picture"
+                      className="w-full h-full object-fit"
+                      width={320}
+                      height={320}
+                    />
                   </div>
 
                   {/* Floating chess pieces around the image */}
