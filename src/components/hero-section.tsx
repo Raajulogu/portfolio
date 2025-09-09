@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ChessIcon } from "@/components/chess-icon"
 import { ChevronDown, Download, Mail } from "lucide-react"
 import Typewriter from 'typewriter-effect';
+import Image from "next/image";
 
 export function HeroSection() {
   // const [typewriterText, setTypewriterText] = useState("")
@@ -66,7 +67,14 @@ export function HeroSection() {
         <div className="mb-8 animate-float">
           <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary p-1">
             <div className="w-full h-full rounded-full bg-card flex items-center justify-center">
-              <span className="text-4xl font-bold text-primary">R</span>
+              {/* <span className="text-4xl font-bold text-primary">R</span> */}
+              <Image
+                src="/logo/R_with_Knight.png"
+                className="w-28 h-28 object-fit rounded-full"
+                width={112}
+                height={112}
+                alt="Profile Picture"
+              />
             </div>
           </div>
         </div>
@@ -74,7 +82,7 @@ export function HeroSection() {
         {/* Name */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up text-balance">
           <span className="bg-gradient-to-r from-foreground via-primary to-secondary bg-clip-text text-transparent">
-            RAJESHKUMAR.R
+            RAJESHKUMAR. R
           </span>
         </h1>
 
@@ -83,7 +91,7 @@ export function HeroSection() {
           <h2 className="text-xl md:text-2xl text-muted-foreground font-medium">
             <Typewriter
               options={{
-                strings: ['Software Developer', 'Creative Technologist','SEO Expert'],
+                strings: ['Software Developer', 'Creative Technologist', 'SEO Expert'],
                 autoStart: true,
                 loop: true,
               }}

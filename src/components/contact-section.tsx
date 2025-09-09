@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChessIcon } from "@/components/chess-icon";
-import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Send, ExternalLink } from "lucide-react";
+import { config } from "../../config";
 
 const contactInfo = [
   {
@@ -16,15 +17,15 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "rajeshkumarlogu145@gmail.com",
-    href: "mailto:rajeshkumarlogu145@gmail.com",
+    value: `${config.EMAIL_USER}`,
+    href: `mailto:${config.EMAIL_USER}`,
     color: "text-secondary",
   },
   {
     icon: MapPin,
     label: "Location",
     value: "Pondicherry, India",
-    href: "#",
+    href: "https://maps.app.goo.gl/9gXEFosVZCU9T9me9",
     color: "text-primary",
   },
 ];
@@ -33,19 +34,19 @@ const socialLinks = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com/in/rajeshkumar-r",
+    href: "https://www.linkedin.com/in/r-rajeshkumar",
     color: "text-blue-500",
   },
   {
     icon: Github,
     label: "GitHub",
-    href: "https://github.com/rajeshkumar-r",
+    href: "https://github.com/Raajulogu",
     color: "text-foreground",
   },
   {
     icon: ExternalLink,
-    label: "Portfolio",
-    href: "#",
+    label: "Medium",
+    href: "https://rkrew.medium.com/",
     color: "text-primary",
   },
 ];
@@ -70,6 +71,42 @@ export function ContactSection() {
 
     return () => observer.disconnect()
   }, [])
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+
+    const nameInput = form.elements.namedItem('name') as HTMLInputElement;
+    const emailInput = form.elements.namedItem('email') as HTMLInputElement;
+    const subjectInput = form.elements.namedItem('subject') as HTMLInputElement;
+    const messageInput = form.elements.namedItem('message') as HTMLTextAreaElement;
+
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const subject = subjectInput.value;
+    const message = messageInput.value;
+
+    //send mail
+    fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, subject, message }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // alert('Email sent successfully!');
+          form.reset();
+        } else {
+          // alert('Failed to send email. Please try again later.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // alert('An error occurred while sending the email. Please try again later.');
+      });
+  }
 
   return (
     <section id="contact" ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -109,10 +146,9 @@ export function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Information */}
           <div
-            className={`space-y-8 transition-all duration-1000 ${
-              isVisible ? "animate-slide-in-left" : "opacity-0 translate-x-8"
-            }`}
-            // style={{ animationDelay: "300ms" }}
+            className={`space-y-8 transition-all duration-1000 ${isVisible ? "animate-slide-in-left" : "opacity-0 translate-x-8"
+              }`}
+          // style={{ animationDelay: "300ms" }}
           >
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-6">Get In Touch</h3>
@@ -135,6 +171,8 @@ export function ContactSection() {
                         <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
                         <a
                           href={info.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="text-foreground font-medium hover:text-primary transition-colors"
                         >
                           {info.value}
@@ -177,10 +215,9 @@ export function ContactSection() {
 
           {/* Contact Form */}
           <div
-            className={`transition-all duration-1000 ${
-              isVisible ? "animate-slide-in-right" : "opacity-0 translate-x-8"
-            }`}
-            // style={{ animationDelay: "500ms" }}
+            className={`transition-all duration-1000 ${isVisible ? "animate-slide-in-right" : "opacity-0 translate-x-8"
+              }`}
+          // style={{ animationDelay: "500ms" }}
           >
             <div className="bg-card border border-border rounded-2xl p-8 relative overflow-hidden">
               {/* Chess Accent */}
@@ -188,7 +225,7 @@ export function ContactSection() {
 
               <h3 className="text-2xl font-bold text-foreground mb-6">Send a Message</h3>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -197,6 +234,7 @@ export function ContactSection() {
                     <input
                       type="text"
                       id="name"
+                      name="name"
                       className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 text-foreground placeholder-muted-foreground"
                       placeholder="Your name"
                     />
@@ -208,6 +246,7 @@ export function ContactSection() {
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 text-foreground placeholder-muted-foreground"
                       placeholder="your.email@example.com"
                     />
@@ -221,6 +260,7 @@ export function ContactSection() {
                   <input
                     type="text"
                     id="subject"
+                    name="subject"
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 text-foreground placeholder-muted-foreground"
                     placeholder="Project discussion"
                   />
@@ -232,6 +272,7 @@ export function ContactSection() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 text-foreground placeholder-muted-foreground resize-none"
                     placeholder="Tell me about your project..."
@@ -261,7 +302,7 @@ export function ContactSection() {
         <div className="text-center mt-16">
           <div
             className={`transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"}`}
-            // style={{ animationDelay: "800ms" }}
+          // style={{ animationDelay: "800ms" }}
           >
             <p className="text-lg text-muted-foreground mb-6 text-pretty">
               Ready to start your next project? Let&apos;s make something amazing together.
@@ -273,7 +314,7 @@ export function ContactSection() {
                 className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
                 asChild
               >
-                <a href="mailto:rajeshkumarlogu145@gmail.com">
+                <a href={`mailto:${config.EMAIL_USER}`}>
                   <span className="relative z-10 flex items-center gap-2">
                     <Mail className="w-5 h-5" />
                     Start a Project

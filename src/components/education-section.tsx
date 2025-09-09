@@ -101,7 +101,7 @@ export function EducationSection() {
                     Bachelor of Science in Statistics
                   </h3>
 
-                  <h4 className="text-lg font-semibold text-secondary mb-4">Indira Gandhi College</h4>
+                  <h4 className="text-lg font-semibold text-secondary mb-4">Indira Gandhi College of arts and science</h4>
 
                   <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
